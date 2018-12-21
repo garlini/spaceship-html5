@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Game HTML5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            canvas {
+                border: 1px solid;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                margin-left: -250px;
+            }
+        </style>
+        <script src="game.js"></script>
+    </head>
+    <body>
+        <canvas width="500" height="500" id="canvas"></canvas>
+        <script>
+            var game = new Game(document.getElementById('canvas'), 500, 500);
+            var loop = new GameLoop(game);
+            game.ongameover = function(){
+                setTimeout(function(){
+                    loop.stop();
+                    alert('Game over!');
+                }, 300);
+            };
+            loop.start();
+        </script>
+    </body>
+</html>
